@@ -2,11 +2,30 @@ import sys
 
 from twitter import Twitter
 from db import Database
+from notifyer import Notifyer
 import config
-import json
+
+
+def find_parent_tg_msg_id(parent_twitter_id: int, user_id: int) -> int:
+    res = db.execute_query(f'select * from tweets where tweet_id = {parent_twitter_id} and user_id = {user_id}')
+    if res:
+        return res[0][3]
+    return 0
+
+
+def save_msg(user_id: int, message_id: int, tweet_id: int, parrent_id: int) -> None:
+    db.execute_query(f'INSERT INTO tweets (tweet_id, parent_id, tg_msg_id, user_id) VALUES ({tweet_id}, {parrent_id}, {message_id}, {user_id})')
+
+
+db = Database(config.db_name)
+db.connect()
+last_tweet_result = db.execute_query('SELECT * FROM tweets ORDER BY id DESC LIMIT 1')
+last_tweet_id = 0
+if last_tweet_result:
+    last_tweet_id = last_tweet_result[0][1]
 
 client = Twitter(config.twitter_key['bearer_token'])
-tweets = client.get_user_tweets(config.bheem_twitter_id, max_results=100)
+tweets = client.get_user_tweets(config.bheem_twitter_id, max_results=10, last_tweet_id=last_tweet_id)
 if client.error_flag:
     print(f'Error {client.error_msg}')
     sys.exit()
@@ -19,7 +38,7 @@ for include in includes['media']:
 
 formatted_tweets = []
 for item in tweets['data']:
-    tweet = {'id': item['id'], 'text': item['text'], 'img':'','referenced_tweet':0}
+    tweet = {'id': item['id'], 'text': item['text'], 'img': '', 'referenced_tweet': 0}
     if 'attachments' in item:
         if item['attachments']['media_keys'][0] in media:
             tweet['img'] = media[item['attachments']['media_keys'][0]]
@@ -30,4 +49,15 @@ for item in tweets['data']:
     formatted_tweets.append(tweet)
 
 formatted_tweets.reverse()
-print(formatted_tweets)
+
+for user in config.users.values():
+    notifyer = Notifyer(user['tg_chat_id'])
+    for tweet in formatted_tweets:
+        parent_msg_tg_id = 0
+        if tweet['referenced_tweet']:
+            parent_msg_tg_id = find_parent_tg_msg_id(tweet['referenced_tweet'], user['tg_chat_id'])
+
+        message_id = notifyer.send_message(tweet['text'], parrent_id=parent_msg_tg_id)
+        save_msg(user['tg_chat_id'], message_id, tweet['referenced_tweet'], tweet['id'])
+        print(message_id, parent_msg_tg_id)
+        print(tweet)
