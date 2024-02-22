@@ -1,8 +1,4 @@
-import twitter
-
+from twitter import Twitter
 import config
 
-api = twitter.Api(consumer_key=config.twitter_key['consumer_key'],
-                  consumer_secret=config.twitter_key['consumer_secret'],
-                  access_token_key=config.twitter_key['access_token_key'],
-                  access_token_secret=config.twitter_key['access_token_secret'])
+client = Twitter(config.twitter_key['bearer_token'])
