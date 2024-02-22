@@ -25,7 +25,7 @@ if last_tweet_result:
     last_tweet_id = last_tweet_result[0][1]
 
 client = Twitter(config.twitter_key['bearer_token'])
-tweets = client.get_user_tweets(config.bheem_twitter_id, max_results=10, last_tweet_id=last_tweet_id)
+tweets = client.get_user_tweets(config.bheem_twitter_id, max_results=100, last_tweet_id=last_tweet_id)
 if client.error_flag:
     print(f'Error {client.error_msg}')
     sys.exit()
@@ -58,6 +58,4 @@ for user in config.users.values():
             parent_msg_tg_id = find_parent_tg_msg_id(tweet['referenced_tweet'], user['tg_chat_id'])
 
         message_id = notifyer.send_message(tweet['text'], parrent_id=parent_msg_tg_id)
-        save_msg(user['tg_chat_id'], message_id, tweet['referenced_tweet'], tweet['id'])
-        print(message_id, parent_msg_tg_id)
-        print(tweet)
+        save_msg(user['tg_chat_id'], message_id, tweet['id'], tweet['referenced_tweet'])
