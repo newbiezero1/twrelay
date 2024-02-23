@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="13ff590a-d269-4007-a863-4c31272a077c" name="Changes" comment="remove old media code">
+    <list default="true" id="13ff590a-d269-4007-a863-4c31272a077c" name="Changes" comment="pep8">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.py" beforeDir="false" afterPath="$PROJECT_DIR$/db.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/twitter.py" beforeDir="false" afterPath="$PROJECT_DIR$/twitter.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,7 +95,7 @@
       <updated>1708528671732</updated>
       <workItem from="1708528673913" duration="67000" />
       <workItem from="1708528755419" duration="22013000" />
-      <workItem from="1708688465731" duration="163000" />
+      <workItem from="1708688465731" duration="411000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <option name="closed" value="true" />
@@ -179,7 +177,15 @@
       <option name="project" value="LOCAL" />
       <updated>1708688560166</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="pep8">
+      <option name="closed" value="true" />
+      <created>1708688644492</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1708688644492</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -207,7 +213,8 @@
     <MESSAGE value="disconnect db" />
     <MESSAGE value="fix gitignore" />
     <MESSAGE value="remove old media code" />
-    <option name="LAST_COMMIT_MESSAGE" value="remove old media code" />
+    <MESSAGE value="pep8" />
+    <option name="LAST_COMMIT_MESSAGE" value="pep8" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

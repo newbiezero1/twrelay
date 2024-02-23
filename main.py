@@ -16,13 +16,17 @@ def find_parent_tg_msg_id(parent_twitter_id: int, user_id: int) -> int:
 def save_msg(user_id: int, message_id: int, tweet_id: int, parrent_id: int) -> None:
     db.execute_query(f'INSERT INTO tweets (tweet_id, parent_id, tg_msg_id, user_id) VALUES ({tweet_id}, {parrent_id}, {message_id}, {user_id})')
 
+def get_last_tweet_id() -> int:
+    last_tweet_result = db.execute_query('SELECT * FROM tweets ORDER BY id DESC LIMIT 1')
+    last_tweet_id = 0
+    if last_tweet_result:
+        last_tweet_id = last_tweet_result[0][1]
+    return last_tweet_id
 
 db = Database(config.db_name)
 db.connect()
-last_tweet_result = db.execute_query('SELECT * FROM tweets ORDER BY id DESC LIMIT 1')
-last_tweet_id = 0
-if last_tweet_result:
-    last_tweet_id = last_tweet_result[0][1]
+
+last_tweet_id = get_last_tweet_id()
 
 client = Twitter(config.twitter_key['bearer_token'])
 tweets = client.get_user_tweets(config.bheem_twitter_id, max_results=100, last_tweet_id=last_tweet_id)
@@ -38,7 +42,6 @@ for item in tweets['data']:
         tweet['referenced_tweet'] = item['referenced_tweets'][0]['id']
 
     formatted_tweets.append(tweet)
-
 formatted_tweets.reverse()
 
 for user in config.users.values():
