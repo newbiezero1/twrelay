@@ -1,6 +1,5 @@
 """Twitter API wrapper"""
 import requests
-import json
 
 
 class Twitter:
@@ -24,6 +23,6 @@ class Twitter:
         return response.json()
 
     def get_user_tweets(self, user_id: int, max_results=50, last_tweet_id=0):
-        url  = f'users/{user_id}/tweets?max_results={max_results}&since_id={last_tweet_id}&expansions=attachments.media_keys,referenced_tweets.id&tweet.fields=attachments&media.fields=url'
+        url = f'users/{user_id}/tweets?max_results={max_results}&since_id={last_tweet_id}&expansions=attachments.media_keys,referenced_tweets.id&tweet.fields=attachments&media.fields=url'
         data = self.connect_to_endpoint(url)
         return data
