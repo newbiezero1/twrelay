@@ -30,18 +30,9 @@ if client.error_flag:
     print(f'Error {client.error_msg}')
     sys.exit()
 
-includes = tweets['includes']
-media = {}
-for include in includes['media']:
-    if include['type'] == 'photo':
-        media[include['media_key']] = include['url']
-
 formatted_tweets = []
 for item in tweets['data']:
-    tweet = {'id': item['id'], 'text': item['text'], 'img': '', 'referenced_tweet': 0}
-    if 'attachments' in item:
-        if item['attachments']['media_keys'][0] in media:
-            tweet['img'] = media[item['attachments']['media_keys'][0]]
+    tweet = {'id': item['id'], 'text': item['text'], 'referenced_tweet': 0}
 
     if 'referenced_tweets' in item:
         tweet['referenced_tweet'] = item['referenced_tweets'][0]['id']
