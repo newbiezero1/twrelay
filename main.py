@@ -13,15 +13,18 @@ def find_parent_tg_msg_id(parent_twitter_id: int, user_id: int) -> int:
     return 0
 
 
-def save_msg(user_id: int, message_id: int, tweet_id: int, parrent_id: int) -> None:
-    db.execute_query(f'INSERT INTO tweets (tweet_id, parent_id, tg_msg_id, user_id) VALUES ({tweet_id}, {parrent_id}, {message_id}, {user_id})')
+def save_msg(user_id: int, msg_id: int, tweet_id: int, parrent_id: int) -> None:
+    db.execute_query(f'''INSERT INTO tweets (tweet_id, parent_id, tg_msg_id, user_id) 
+    VALUES ({tweet_id}, {parrent_id}, {msg_id}, {user_id})''')
+
 
 def get_last_tweet_id() -> int:
     last_tweet_result = db.execute_query('SELECT * FROM tweets ORDER BY id DESC LIMIT 1')
-    last_tweet_id = 0
+    tweet_id = 0
     if last_tweet_result:
-        last_tweet_id = last_tweet_result[0][1]
-    return last_tweet_id
+        tweet_id = last_tweet_result[0][1]
+    return tweet_id
+
 
 db = Database(config.db_name)
 db.connect()
