@@ -36,7 +36,8 @@ tweets = client.get_user_tweets(config.bheem_twitter_id, max_results=100, last_t
 if client.error_flag:
     print(f'Error {client.error_msg}')
     sys.exit()
-
+print(last_tweet_id)
+print(tweets)
 formatted_tweets = []
 for item in tweets['data']:
     tweet = {'id': item['id'], 'text': item['text'], 'referenced_tweet': 0}
