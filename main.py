@@ -59,5 +59,5 @@ for user in config.users.values():
 
         message_id = notifyer.send_message(tweet['text'], parrent_id=parent_msg_tg_id)
         save_msg(user['tg_chat_id'], message_id, tweet['id'], tweet['referenced_tweet'])
-
+        break
 db.disconnect()
