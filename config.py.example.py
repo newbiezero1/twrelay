@@ -15,3 +15,8 @@ users = {
         'tg_chat_id': 00000000,
     },
 }
+
+last_tweet_file = 'last_tweet.json'
+
+sinch_phone_from = '+11111111111'
+worker_phone = '+222222222222'

@@ -1,4 +1,6 @@
 import sys
+import json
+import time
 
 from twitter import Twitter
 from db import Database
@@ -16,6 +18,8 @@ def find_parent_tg_msg_id(parent_twitter_id: int, user_id: int) -> int:
 def save_msg(user_id: int, msg_id: int, tweet_id: int, parrent_id: int) -> None:
     db.execute_query(f'''INSERT INTO tweets (tweet_id, parent_id, tg_msg_id, user_id) 
     VALUES ({tweet_id}, {parrent_id}, {msg_id}, {user_id})''')
+    with open(config.last_tweet_file, 'w') as f:
+        f.write(json.dumps({'tweet_id': tweet_id, 'time': int(time.time())}))
 
 
 def get_last_tweet_id() -> int:
@@ -36,8 +40,6 @@ tweets = client.get_user_tweets(config.bheem_twitter_id, max_results=100, last_t
 if client.error_flag:
     print(f'Error {client.error_msg}')
     sys.exit()
-print(last_tweet_id)
-print(tweets)
 formatted_tweets = []
 for item in tweets['data']:
     tweet = {'id': item['id'], 'text': item['text'], 'referenced_tweet': 0}
