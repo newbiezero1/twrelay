@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="13ff590a-d269-4007-a863-4c31272a077c" name="Changes" comment="refactroring">
-      <change afterPath="$PROJECT_DIR$/call.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/last_tweet.json.example" afterDir="false" />
+    <list default="true" id="13ff590a-d269-4007-a863-4c31272a077c" name="Changes" comment="save last tweet time in file and add call function">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.py.example.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py.example.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/call.py" beforeDir="false" afterPath="$PROJECT_DIR$/call.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -212,7 +210,15 @@
       <option name="project" value="LOCAL" />
       <updated>1708688996453</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="save last tweet time in file and add call function">
+      <option name="closed" value="true" />
+      <created>1709024944844</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1709024944844</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -242,7 +248,8 @@
     <MESSAGE value="remove old media code" />
     <MESSAGE value="pep8" />
     <MESSAGE value="refactroring" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactroring" />
+    <MESSAGE value="save last tweet time in file and add call function" />
+    <option name="LAST_COMMIT_MESSAGE" value="save last tweet time in file and add call function" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -256,7 +263,7 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/twitter$call.coverage" NAME="call Coverage Results" MODIFIED="1709023869006" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/twitter$main.coverage" NAME="main Coverage Results" MODIFIED="1709024760565" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/twitter$main.coverage" NAME="main Coverage Results" MODIFIED="1709025411940" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/twitter$call.coverage" NAME="call Coverage Results" MODIFIED="1709025426954" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
